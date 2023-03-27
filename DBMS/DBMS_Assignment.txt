@@ -1,0 +1,39 @@
+SELECT * FROM employee.employee1;
+#Display last_name, job_id, employee_id for each employee with employee_id appearing first.
+Select JOB_ID,LAST_NAME,EMPLOYEE_ID from employee.employee1;
+#Display the details of all employees of department 60.
+Select * from employee.employee1 where DEPARTMENT_ID=60;
+#Display the employee details of the employee who’s last_name is King.
+Select * from employee.employee1 where LAST_NAME="King";
+#Display unique job_id from EMPLOYEE table. Give alias name to the column as JOB_TITLE.
+Select distinct JOB_ID as JOB_TITLE from employee.employee1;
+#Display last_name, salary and salary increase of Rs300. Give the new column name as ‘Increased Salary’.   
+Select LAST_NAME,SALARY, (SALARY + 300) as 'Increased Salary' from employee.employee1;
+#Display last_name, salary and annual compensation of all employees, plus a onetime bonus of Rs 100. Give an alias name to the column displaying annual compensation.
+Select LAST_NAME, SALARY, COMM_PCT AS 'annual compensation', 100 AS 'One time bonus' from employee.employee1;
+#Display the details of those employees who get commission.
+Select * from employee.employee1 where COMM_PCT is not NULL;
+#Display the details of those employees who do not get commission.
+Select * from employee.employee1 where COMM_PCT is NULL;
+#Display the Employee_id, Department_id and Salary all employees whose salary is greater than 5000.
+Select EMPLOYEE_ID,DEPARTMENT_ID,SALARY from  employee.employee1 where (SALARY >5000);
+#Display the Last_Name and Salary of all employees whose salary is between 4000 and 7000.
+Select LAST_NAME, SALARY from employee.employee1 where SALARY between 4000 and 7000;
+#Display the details of all employees whose salary is either 6000 or 6500 or 7000.
+Select * from employee.employee1 where SALARY = 6000 || SALARY= 6500 || SALARY=7000;
+#Display the details of all those employees who work either in department 10 or 20 or 30 or 50.
+Select * from employee.employee1 where DEPARTMENT_ID in (10,20,30,50);
+#Display the details of all employees whose salary is not equal to 5000.
+Select * from employee.employee1 where SALARY !=5000;
+#Display the details of all the CLERKS working in the organization.
+Select * from employee.employee1 where JOB_ID='SH_CLERK';
+#Update the job_id’s of the employees who earn more than 5000 to Grade_A. Display the table EMPLOYEE after updating.
+SET SQL_SAFE_UPDATES = 0;
+Update employee1 set JOB_ID='Grade_A' where SALARY>5000;
+Select * from employee1;
+#Display the details of all those employees who are either CLERK or PROGRAMMER or ASSISTANT.
+Select * from employee1 where JOB_ID in('SH_CLERK','AD_AASST','IT_PROG');
+#Display those employees from the EMPLOYEE table whose designation is CLERK and salary is less than 3000.
+Select * from employee1 where (JOB_ID='SH_CLERK' && SALARY <3000);
+#Display those employees Last_Name, Mgr_id from the EMPLOYEE table whose salary is above 3000 and work under Manager 101.
+Select LAST_NAME, MGR_ID from employee1 where (MGR_ID=101 && SALARY>3000);
